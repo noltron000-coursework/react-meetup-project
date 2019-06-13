@@ -1,39 +1,37 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-class GameScreen extends React.Component {
+const GameScreen = () => {
 
-	constructor(props) {
-		super(props)
-		this.updateInput = this.updateInput.bind(this)
+	let [inputState, setInputState] = useState('')
+
+	const updateInput = (event) => {
+		setInputState(event.target.value)
 	}
 
-	updateInput = (event) => {
-		console.log(event.target.value)
-	}
+	return (
+		<div>
+			<h1>Text Adventure</h1>
 
-	render () {
-		return(
-			<div>
-				<p>hello world!</p>
-				<samp>
-					<p>input line</p>
-					<p>result: output line</p>
-				</samp>
-				<textarea
-					onChange = {(event) => {
-						this.updateInput(event)
-					}}
-				></textarea>
-				<button>enter</button>
-				<ul>
-					<li><a>up</a></li>
-					<li><a>down</a></li>
-					<li><a>left</a></li>
-					<li><a>right</a></li>
-				</ul>
-			</div>
-		)
-	}
+			<samp>
+				<p>input line</p>
+				<p>result: output line</p>
+				<p></p>
+			</samp>
+
+			<textarea
+				onChange = {(event) => {
+					updateInput(event)
+				}}
+				value = {inputState}
+			></textarea>
+			<br />
+			<button
+				onClick = {() => {
+				
+			}}>enter</button>
+
+		</div>
+	)
 }
 
 export default GameScreen
